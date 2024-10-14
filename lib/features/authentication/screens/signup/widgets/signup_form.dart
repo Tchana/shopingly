@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shopingly/features/authentication/screens/signup/verify_email.dart';
 import 'package:shopingly/features/authentication/screens/signup/widgets/terms_conditions_checkbox.dart';
 import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
@@ -107,7 +109,7 @@ class ShopinglySignupForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () => Get.to(() =>VerifyEmailScreen()),
               child: Text(ShopinglyTexts.createAccount),
             ),
           ),

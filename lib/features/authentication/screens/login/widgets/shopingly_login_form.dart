@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shopingly/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:shopingly/features/authentication/screens/signup/signup.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
 import 'package:shopingly/utils/constants/text_strings.dart';
@@ -46,7 +47,7 @@ class ShopinglyLoginForm extends StatelessWidget {
                   ],
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => Get.to(() => ForgetPassword()),
                   child: const Text(ShopinglyTexts.forgetPassword),
                 ),
               ],

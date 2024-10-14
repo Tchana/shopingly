@@ -17,6 +17,8 @@ dependencies:
   intl: ^0.19.0
   logger: ^2.4.0
   url_launcher: ^6.3.1
+  flutter_native_splash: ^2.4.1  # flutter pub run flutter_native_splash:create --path=splash.yaml
+  smooth_page_indicator: ^1.2.0+3
 
   iconsax: ^0.0.8
   cupertino_icons: ^1.0.8
@@ -37,7 +39,7 @@ flutter:
   assets:
     - assets/logos/
     - assets/icons/
-    - assets/images/
+    - assets/images/onboarding/
 
   fonts:
     - family: Poppins

@@ -1,4 +1,4 @@
-class shopinglyTexts {
+class ShopinglyTexts {
   // Onboarding texts
   static const String onBoardingTitle1 = "Choose your product";
   static const String onBoardingTitle2 = "Select Payment Method";

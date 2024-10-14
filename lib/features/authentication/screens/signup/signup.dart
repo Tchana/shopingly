@@ -1,39 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shopingly/common/styles/spacing_styles.dart';
 import 'package:shopingly/common/widgets/login_signup/shopingly_form_divider.dart';
 import 'package:shopingly/common/widgets/login_signup/shopingly_social_buttons.dart';
-import 'package:shopingly/features/authentication/screens/login/widgets/shopingly_login_form.dart';
-import 'package:shopingly/features/authentication/screens/login/widgets/shopingly_login_header.dart';
+import 'package:shopingly/features/authentication/screens/signup/widgets/signup_form.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
 import 'package:shopingly/utils/constants/text_strings.dart';
 import 'package:shopingly/utils/helpers/helper_functions.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final dark = ShopinglyHelperFunctions.isDarkMode(context);
     return Scaffold(
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: ShopinglySpacingStyles.paddingWithAppBarHeight,
+          padding: EdgeInsets.all(ShopinglySizes.defaultSpace),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /// Logo, title & subtitle
-              ShopinglyLoginHeader(dark: dark),
-
-              /// Form
-              ShopinglyLoginForm(),
-
-              /// Divider
-              ShopinglyFormDivider(dark: dark, dividerText: ShopinglyTexts.orSignInWith.capitalize!),
+              Text(
+                ShopinglyTexts.signupTitle,
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
               SizedBox(
                 height: ShopinglySizes.spaceBtwSections,
               ),
+              ShopinglySignupForm(dark: dark),
+              SizedBox(height: ShopinglySizes.spaceBtwSections,),
 
-              /// Footer
+              /// Divider
+              ShopinglyFormDivider(dark: dark, dividerText: ShopinglyTexts.orSignUpWith.capitalize!),
+              SizedBox(height: ShopinglySizes.spaceBtwSections,),
+
+              /// Social buttons
               ShopinglySocialButtons(),
             ],
           ),
@@ -42,5 +44,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-
-

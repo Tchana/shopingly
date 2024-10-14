@@ -1,7 +1,7 @@
 class ShopinglyImages {
   // -- App logos
-  static const String darkAppLogo = "assets/logos/shopingly-logo-black.png";
-  static const String lightAppLogo = "assets/logos/shopingly-logo-white.png";
+  static const String darkAppLogo = "assets/logos/shopingly-splash-logo.png";
+  static const String lightAppLogo = "assets/logos/shopingly-splash-logo-white.png";
 
   // -- Social logos
   static const String google = "assets/logos/google-icon.png";

@@ -35,4 +35,20 @@ class ShopinglyImages {
   static const String promoBanner1 = "assets/images/banners/fashion-banner.jpeg";
   static const String promoBanner2 = "assets/images/banners/sneaker-promo.jpeg";
   static const String promoBanner3 = "assets/images/banners/black-friday.jpeg";
+
+  // -- Products
+  static const String product1 = "assets/images/products/shirt.jpeg";
+  static const String product2 = "assets/images/products/jordan.jpeg";
+  static const String product3 = "assets/images/products/baseball-bat.jpeg";
+  static const String product4 = "assets/images/products/jeans.jpeg";
+  static const String product5 = "assets/images/products/headphones.jpeg";
+  static const String product6 = "assets/images/products/slippers.jpeg";
+  static const String product7 = "assets/images/products/tennis-racket.jpeg";
+  static const String product8 = "assets/images/products/headset.jpeg";
+  static const String product9 = "assets/images/products/basketball.jpeg";
+  static const String product10 = "assets/images/products/dog-food.jpeg";
+  static const String product11 = "assets/images/products/iphone-xr.jpeg";
+  static const String product12 = "assets/images/products/jacket.jpeg";
+  static const String product13 = "assets/images/products/samsung-s9.jpeg";
+
 }

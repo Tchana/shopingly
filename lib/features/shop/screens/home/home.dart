@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopingly/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:shopingly/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:shopingly/common/widgets/layouts/grid_layout.dart';
+import 'package:shopingly/common/widgets/products/cart/product_cards/product_card_vertical.dart';
 import 'package:shopingly/common/widgets/texts/section_heading.dart';
 import 'package:shopingly/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:shopingly/features/shop/screens/home/widgets/home_categories.dart';
@@ -52,8 +54,23 @@ class HomeScreen extends StatelessWidget {
 
             /// Body
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: ShopinglySizes.defaultSpace, horizontal: ShopinglySizes.defaultSpace - 22),
-              child: ShopinglyPromoSlider(banners: [ShopinglyImages.promoBanner1, ShopinglyImages.promoBanner2, ShopinglyImages.promoBanner3],),
+              padding: const EdgeInsets.symmetric(
+                  vertical: ShopinglySizes.defaultSpace,),
+              child: Column(
+                children: [
+                  ShopinglyPromoSlider(
+                    banners: [
+                      ShopinglyImages.promoBanner1,
+                      ShopinglyImages.promoBanner2,
+                      ShopinglyImages.promoBanner3
+                    ],
+                  ),
+                  SizedBox(height: ShopinglySizes.spaceBtwSections),
+
+                  /// Popular products
+                  ShopinglyGridLayout(itemCount: 4, itemBuilder: (_, index) => ShopinglyProductCardVertical())
+                ],
+              ),
             )
           ],
         ),

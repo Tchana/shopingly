@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shopingly/common/widgets/custom_shapes/containers/primary_header_container.dart';
+import 'package:shopingly/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:shopingly/common/widgets/texts/section_heading.dart';
 import 'package:shopingly/features/shop/screens/home/widgets/home_appbar.dart';
+import 'package:shopingly/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:shopingly/features/shop/screens/home/widgets/promo_slider.dart';
+import 'package:shopingly/utils/constants/colors.dart';
+import 'package:shopingly/utils/constants/image_strings.dart';
+import 'package:shopingly/utils/constants/sizes.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,10 +21,40 @@ class HomeScreen extends StatelessWidget {
             PrimaryHeaderContainer(
               child: Column(
                 children: [
-                  ShopinglyHomeAppBar()
+                  /// -- Appbar
+                  ShopinglyHomeAppBar(),
+                  SizedBox(height: ShopinglySizes.spaceBtwSections),
+
+                  /// -- Searchbar
+                  ShopinglySearchContainer(text: 'Search in Store'),
+                  SizedBox(height: ShopinglySizes.spaceBtwSections),
+
+                  /// -- Categories
+                  Padding(
+                    padding: EdgeInsets.only(left: ShopinglySizes.defaultSpace),
+                    child: Column(
+                      children: [
+                        /// -- Heading
+                        ShopinglySectionHeading(
+                            title: 'Popular Categories',
+                            showActionButton: false,
+                            textColor: ShopinglyColors.white),
+                        SizedBox(height: ShopinglySizes.spaceBtwItems),
+
+                        /// -- Categories
+                        ShopinglyHomeCategories()
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
+
+            /// Body
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: ShopinglySizes.defaultSpace, horizontal: ShopinglySizes.defaultSpace - 22),
+              child: ShopinglyPromoSlider(banners: [ShopinglyImages.promoBanner1, ShopinglyImages.promoBanner2, ShopinglyImages.promoBanner3],),
+            )
           ],
         ),
       ),

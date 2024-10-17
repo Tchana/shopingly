@@ -49,8 +49,9 @@ class ShopinglyVerticalImageText extends StatelessWidget {
                       .textTheme
                       .labelMedium!
                       .apply(
-                      color: textColor),
+                      color: textColor,),
                   maxLines: 1,
+                  textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                 ))
           ],

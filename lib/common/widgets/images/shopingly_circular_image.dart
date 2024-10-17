@@ -33,10 +33,13 @@ class ShopinglyCircularImage extends StatelessWidget {
       decoration: BoxDecoration(
           color: backgroundColor ?? (dark ? ShopinglyColors.black : ShopinglyColors.white),
           borderRadius: BorderRadius.circular(100)),
-      child: Image(
-        fit: fit,
-          image: isNetworkImage ? NetworkImage(image) : AssetImage(image) as ImageProvider,
-          color: overlayColor,),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: Image(
+          fit: fit,
+            image: isNetworkImage ? NetworkImage(image) : AssetImage(image) as ImageProvider,
+            color: overlayColor,),
+      ),
     );
 
   }

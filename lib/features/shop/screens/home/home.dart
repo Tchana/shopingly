@@ -44,7 +44,8 @@ class HomeScreen extends StatelessWidget {
                         SizedBox(height: ShopinglySizes.spaceBtwItems),
 
                         /// -- Categories
-                        ShopinglyHomeCategories()
+                        ShopinglyHomeCategories(),
+                        SizedBox(height: ShopinglySizes.spaceBtwSections),
                       ],
                     ),
                   ),

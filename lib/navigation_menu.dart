@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopingly/features/shop/screens/home/home.dart';
+import 'package:shopingly/features/shop/screens/store/store.dart';
+import 'package:shopingly/features/shop/screens/wishlist/wishlist.dart';
 import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/helpers/helper_functions.dart';
 
@@ -39,5 +41,5 @@ class NavigationMenu extends StatelessWidget {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
 
-  final screens = [HomeScreen(), Container(color: Colors.red,), Container(color: Colors.yellow,), Container(color: Colors.white38,),];
+  final screens = [HomeScreen(), StoreScreen(), FavouriteScreen(), Container(color: Colors.white38,),];
 }

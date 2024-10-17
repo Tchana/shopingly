@@ -5,7 +5,7 @@ import 'package:shopingly/utils/helpers/helper_functions.dart';
 
 class ShopinglyVerticalImageText extends StatelessWidget {
   const ShopinglyVerticalImageText({
-    super.key, required this.image, required this.title, this.textColor = ShopinglyColors.white, this.backgroundColor = ShopinglyColors.white, this.onTap,
+    super.key, required this.image, required this.title, this.textColor = ShopinglyColors.white, this.backgroundColor, this.onTap,
   });
 
   final String image, title;

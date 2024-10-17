@@ -12,13 +12,16 @@ class ShopinglySearchContainer extends StatelessWidget {
     this.icon = Iconsax.search_normal,
     this.showBackground = true,
     this.showBorder = true,
-    this.onTap
+    this.onTap,
+    this.padding =
+        const EdgeInsets.symmetric(horizontal: ShopinglySizes.defaultSpace),
   });
 
   final String text;
   final IconData? icon;
   final bool showBackground, showBorder;
   final VoidCallback? onTap;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +30,7 @@ class ShopinglySearchContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding:
-            const EdgeInsets.symmetric(horizontal: ShopinglySizes.defaultSpace),
+        padding: padding,
         child: Container(
           width: ShopinglyDeviceUtils.getScreenWidth(),
           padding: EdgeInsets.all(ShopinglySizes.md),

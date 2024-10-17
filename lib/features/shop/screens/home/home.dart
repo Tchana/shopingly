@@ -54,8 +54,7 @@ class HomeScreen extends StatelessWidget {
 
             /// Body
             Padding(
-              padding: const EdgeInsets.symmetric(
-                  vertical: ShopinglySizes.defaultSpace,),
+              padding: const EdgeInsets.all(ShopinglySizes.defaultSpace,),
               child: Column(
                 children: [
                   ShopinglyPromoSlider(
@@ -66,6 +65,9 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: ShopinglySizes.spaceBtwSections),
+
+                  ShopinglySectionHeading(title: "Popular Products", onPressed: (){},),
+                  SizedBox(height: ShopinglySizes.spaceBtwItems),
 
                   /// Popular products
                   ShopinglyGridLayout(itemCount: 4, itemBuilder: (_, index) => ShopinglyProductCardVertical())

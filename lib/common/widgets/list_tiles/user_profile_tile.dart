@@ -7,15 +7,15 @@ import 'package:shopingly/utils/helpers/helper_functions.dart';
 
 class ShopinglyUserProfileTile extends StatelessWidget {
   const ShopinglyUserProfileTile({
-    super.key,
+    super.key, this.onPressed,
   });
 
+  final VoidCallback? onPressed;
   @override
   Widget build(BuildContext context) {
     final dark = ShopinglyHelperFunctions.isDarkMode(context);
     return ListTile(
       leading: ShopinglyCircularImage(
-        dark: dark,
         image: ShopinglyImages.user,
         width: 50,
         height: 50,
@@ -23,7 +23,7 @@ class ShopinglyUserProfileTile extends StatelessWidget {
       ),
       title: Text('Tchana Valdo', style: Theme.of(context).textTheme.headlineSmall!.apply(color: ShopinglyColors.white),),
       subtitle: Text('valdotnv@gmail.com', style: Theme.of(context).textTheme.bodyMedium!.apply(color: ShopinglyColors.white),),
-      trailing: IconButton(onPressed: (){}, icon: Icon(Iconsax.edit, color: ShopinglyColors.white,)),
+      trailing: IconButton(onPressed: onPressed, icon: Icon(Iconsax.edit, color: ShopinglyColors.white,)),
     );
   }
 }

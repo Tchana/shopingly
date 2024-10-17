@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopingly/common/widgets/appbar/appbar.dart';
 import 'package:shopingly/common/widgets/custom_shapes/containers/primary_header_container.dart';
-import 'package:shopingly/common/widgets/images/shopingly_circular_image.dart';
 import 'package:shopingly/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:shopingly/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:shopingly/common/widgets/texts/section_heading.dart';
+import 'package:shopingly/features/personalization/screens/profile/profile.dart';
 import 'package:shopingly/utils/constants/colors.dart';
-import 'package:shopingly/utils/constants/image_strings.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
 import 'package:shopingly/utils/helpers/helper_functions.dart';
 
@@ -34,7 +34,7 @@ class SettingsScreen extends StatelessWidget {
                           .apply(color: ShopinglyColors.white),
                     ),
                   ),
-                  ShopinglyUserProfileTile(),
+                  ShopinglyUserProfileTile(onPressed: () => Get.to(()=> ProfileScreen()),),
                   SizedBox(height: ShopinglySizes.spaceBtwSections),
                 ],
               ),

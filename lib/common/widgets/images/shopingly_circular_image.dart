@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
+import 'package:shopingly/utils/helpers/helper_functions.dart';
 
 class ShopinglyCircularImage extends StatelessWidget {
   const ShopinglyCircularImage({
     super.key,
-    required this.dark,
     this.fit = BoxFit.cover,
     required this.image,
     this.isNetworkImage = false,
@@ -16,7 +16,6 @@ class ShopinglyCircularImage extends StatelessWidget {
     this.padding = ShopinglySizes.sm,
   });
 
-  final bool dark;
   final BoxFit? fit;
   final String image;
   final bool isNetworkImage;
@@ -26,6 +25,7 @@ class ShopinglyCircularImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = ShopinglyHelperFunctions.isDarkMode(context);
     return Container(
       height: height,
       width: width,

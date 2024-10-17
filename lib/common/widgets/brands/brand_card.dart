@@ -31,7 +31,6 @@ class ShopinglyBrandCard extends StatelessWidget {
           children: [
             Flexible(
               child: ShopinglyCircularImage(
-                dark: dark,
                 image: ShopinglyImages.clothIcon,
                 isNetworkImage: false,
                 backgroundColor: Colors.transparent,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
+import 'package:shopingly/utils/helpers/helper_functions.dart';
 
 class ShopinglyRoundedImage extends StatelessWidget {
   const ShopinglyRoundedImage({
@@ -10,7 +11,7 @@ class ShopinglyRoundedImage extends StatelessWidget {
     required this.imageUrl,
     this.applyImageRadius = true,
     this.border,
-    this.backgroundColor = ShopinglyColors.light,
+    this.backgroundColor,
     this.fit = BoxFit.contain,
     this.padding,
     this.isNetworkImage = false,
@@ -31,6 +32,7 @@ class ShopinglyRoundedImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = ShopinglyHelperFunctions.isDarkMode(context);
     return GestureDetector(
       onTap: onPressed,
       child: Container(
@@ -39,7 +41,7 @@ class ShopinglyRoundedImage extends StatelessWidget {
         padding: padding,
         decoration: BoxDecoration(
           border: border,
-          color: backgroundColor,
+          color: backgroundColor ?? (dark ? ShopinglyColors.dark : ShopinglyColors.light),
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: ClipRRect(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
+import 'package:shopingly/utils/helpers/helper_functions.dart';
 
 class ShopinglyCircularIcon extends StatelessWidget {
   const ShopinglyCircularIcon({
     super.key,
-    required this.dark,
     this.width,
     this.height,
     this.size = ShopinglySizes.lg,
@@ -14,8 +14,6 @@ class ShopinglyCircularIcon extends StatelessWidget {
     this.backgroundColor,
     this.onPressed,
   });
-
-  final bool dark;
   final double? width, height, size;
   final IconData icon;
   final Color? color;
@@ -24,6 +22,7 @@ class ShopinglyCircularIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = ShopinglyHelperFunctions.isDarkMode(context);
     return Container(
       width: width,
       height: height,

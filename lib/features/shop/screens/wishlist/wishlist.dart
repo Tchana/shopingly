@@ -21,7 +21,6 @@ class FavouriteScreen extends StatelessWidget {
             Text('Wishlist', style: Theme.of(context).textTheme.headlineMedium),
         actions: [
           ShopinglyCircularIcon(
-            dark: dark,
             icon: Iconsax.add,
             onPressed: () => Get.to(HomeScreen()),
           )

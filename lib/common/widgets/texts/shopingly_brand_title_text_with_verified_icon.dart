@@ -8,7 +8,7 @@ class ShopinglyBrandTitleTextWithVerifiedIcon extends StatelessWidget {
   const ShopinglyBrandTitleTextWithVerifiedIcon(
       {super.key,
       required this.title,
-      required this.maxLines,
+      this.maxLines = 1,
       this.textColor,
       this.iconColor,
       this.textAlign,

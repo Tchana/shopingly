@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopingly/common/styles/shadow.dart';
 import 'package:shopingly/common/widgets/custom_shapes/containers/rounded_container.dart';
@@ -7,6 +8,7 @@ import 'package:shopingly/common/widgets/images/shopingly_rounded_image.dart';
 import 'package:shopingly/common/widgets/texts/product_price_text.dart';
 import 'package:shopingly/common/widgets/texts/product_title_text.dart';
 import 'package:shopingly/common/widgets/texts/shopingly_brand_title_text.dart';
+import 'package:shopingly/features/shop/screens/product_details/product_detail.dart';
 import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/constants/image_strings.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
@@ -19,7 +21,7 @@ class ShopinglyProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = ShopinglyHelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(()=>ProductDetailScreen()),
       child: Container(
         width: 180,
         padding: EdgeInsets.all(1),
@@ -59,7 +61,6 @@ class ShopinglyProductCardVertical extends StatelessWidget {
                       top: 0,
                       right: 0,
                       child: ShopinglyCircularIcon(
-                        dark: dark,
                         icon: Iconsax.heart5,
                         color: Colors.red,
                       ))

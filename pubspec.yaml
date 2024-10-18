@@ -21,6 +21,7 @@ dependencies:
   smooth_page_indicator: ^1.2.0+3
   carousel_slider: ^5.0.0
   readmore: ^3.0.0
+  flutter_rating_bar: ^4.0.1
 
   iconsax: ^0.0.8
   cupertino_icons: ^1.0.8
@@ -46,6 +47,7 @@ flutter:
     - assets/images/products/
     - assets/images/banners/
     - assets/images/user/
+    - assets/images/reviews/
     - assets/icons/categories/
 
   fonts:

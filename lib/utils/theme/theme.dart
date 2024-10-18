@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/theme/custom_theme/appbar_theme.dart';
 import 'package:shopingly/utils/theme/custom_theme/bottom_sheet_theme.dart';
 import 'package:shopingly/utils/theme/custom_theme/checkbox_theme.dart';
@@ -15,8 +16,8 @@ class ShopinglyAppTheme {
     useMaterial3: true,
     fontFamily: 'Poppins',
     brightness: Brightness.light,
-    primaryColor: Colors.redAccent,
-    scaffoldBackgroundColor: Colors.white,
+    primaryColor: ShopinglyColors.primaryColor,
+    scaffoldBackgroundColor: ShopinglyColors.white,
     textTheme: ShopinglyTextTheme.lightTextTheme,
     chipTheme: ShopinglyChipTheme.lightChipTheme,
     appBarTheme: ShopinglyAppBarTheme.lightAppBarTheme,
@@ -30,8 +31,8 @@ class ShopinglyAppTheme {
     useMaterial3: true,
     fontFamily: 'Poppins',
     brightness: Brightness.dark,
-    primaryColor: Colors.redAccent,
-    scaffoldBackgroundColor: Colors.black,
+    primaryColor: ShopinglyColors.primaryColor,
+    scaffoldBackgroundColor: ShopinglyColors.black,
     textTheme: ShopinglyTextTheme.darkTextTheme,
     chipTheme: ShopinglyChipTheme.darkChipTheme,
     appBarTheme: ShopinglyAppBarTheme.darkAppBarTheme,

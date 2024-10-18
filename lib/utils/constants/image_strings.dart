@@ -36,6 +36,11 @@ class ShopinglyImages {
   static const String promoBanner2 = "assets/images/banners/sneaker-promo.jpeg";
   static const String promoBanner3 = "assets/images/banners/black-friday.jpeg";
 
+  // -- Product reviews
+  static const String userProfileImage1 = "assets/images/reviews/user_profile_image_1.jpeg";
+  static const String userProfileImage2 = "assets/images/reviews/user_profile_image_2.jpeg";
+  static const String userProfileImage3 = "assets/images/reviews/user_profile_image_3.jpeg";
+
   // -- Profile
   static const String user = "assets/images/user/user.jpeg";
 

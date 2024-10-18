@@ -5,18 +5,18 @@ class ShopinglyChipTheme {
   ShopinglyChipTheme._();
 
   static ChipThemeData lightChipTheme = ChipThemeData(
-    disabledColor: Colors.grey.withOpacity(0.4),
-    labelStyle: const TextStyle(color: Colors.black),
+    disabledColor: ShopinglyColors.grey.withOpacity(0.4),
+    labelStyle: const TextStyle(color: ShopinglyColors.black),
     selectedColor: ShopinglyColors.primaryColor,
     padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
-    checkmarkColor: Colors.white,
+    checkmarkColor: ShopinglyColors.white,
   );
 
   static ChipThemeData darkChipTheme = ChipThemeData(
-    disabledColor: Colors.grey,
-    labelStyle: const TextStyle(color: Colors.white),
+    disabledColor: ShopinglyColors.grey,
+    labelStyle: const TextStyle(color: ShopinglyColors.white),
     selectedColor: ShopinglyColors.primaryColor,
     padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
-    checkmarkColor: Colors.white,
+    checkmarkColor: ShopinglyColors.white,
   );
 }

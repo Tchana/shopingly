@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopingly/utils/constants/colors.dart';
 
 class ShopinglyCheckboxTheme {
   ShopinglyCheckboxTheme._();
@@ -7,14 +8,14 @@ class ShopinglyCheckboxTheme {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
     checkColor: WidgetStateProperty.resolveWith((states) {
       if( states.contains(WidgetState.selected)) {
-        return Colors.white;
+        return ShopinglyColors.white;
       } else {
-        return Colors.black;
+        return ShopinglyColors.black;
       }
     }),
     fillColor: WidgetStateProperty.resolveWith((states){
       if( states.contains(WidgetState.selected)) {
-        return Colors.redAccent;
+        return ShopinglyColors.primaryColor;
       } else {
         return Colors.transparent;
       }

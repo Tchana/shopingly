@@ -80,7 +80,7 @@ class ShopinglyProductCardHorizontal extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ShopinglyProductTitleText(title: 'Green Nike half Sleeves shirt', smallSize: true),
-                      SizedBox(height: ShopinglySizes.spaceBtwItems /2),
+                      SizedBox(height: ShopinglySizes.spaceBtwItems / 2),
 
                       ShopinglyBrandTitleTextWithVerifiedIcon(title: "Nike")
                     ],

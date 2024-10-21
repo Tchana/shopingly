@@ -8,6 +8,8 @@ import 'package:shopingly/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:shopingly/common/widgets/texts/section_heading.dart';
 import 'package:shopingly/features/personalization/screens/address/address.dart';
 import 'package:shopingly/features/personalization/screens/profile/profile.dart';
+import 'package:shopingly/features/shop/screens/cart/cart.dart';
+import 'package:shopingly/features/shop/screens/order/order.dart';
 import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
 import 'package:shopingly/utils/helpers/helper_functions.dart';
@@ -63,12 +65,12 @@ class SettingsScreen extends StatelessWidget {
                       icon: Iconsax.shopping_cart,
                       title: "My Cart",
                       subTitle: "Add, remove products and move to checkout",
-                      onTap: () {}),
+                      onTap:  () => Get.to(() => CartScreen())),
                   ShopinglySettingsMenuTile(
                       icon: Iconsax.bag_tick,
                       title: "My Orders",
                       subTitle: "In progress and completed orders",
-                      onTap: () {}),
+                      onTap:  () => Get.to(() => OrderScreen())),
                   ShopinglySettingsMenuTile(
                       icon: Iconsax.bank,
                       title: "Bank Account",

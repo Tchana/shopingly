@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopingly/common/widgets/brands/brand_show_case.dart';
 import 'package:shopingly/common/widgets/layouts/grid_layout.dart';
-import 'package:shopingly/common/widgets/products/cart/product_cards/product_card_vertical.dart';
+import 'package:shopingly/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:shopingly/common/widgets/texts/section_heading.dart';
 import 'package:shopingly/utils/constants/image_strings.dart';
 import 'package:shopingly/utils/constants/sizes.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 import 'package:shopingly/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:shopingly/common/widgets/products/cart/ratings/rating_indicator.dart';
+import 'package:shopingly/common/widgets/products/ratings/rating_indicator.dart';
 import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/constants/image_strings.dart';
 import 'package:shopingly/utils/constants/sizes.dart';

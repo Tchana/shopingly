@@ -4,7 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:shopingly/common/widgets/appbar/appbar.dart';
 import 'package:shopingly/common/widgets/icons/circular_icon.dart';
 import 'package:shopingly/common/widgets/layouts/grid_layout.dart';
-import 'package:shopingly/common/widgets/products/cart/product_cards/product_card_vertical.dart';
+import 'package:shopingly/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:shopingly/features/shop/screens/home/home.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
 import 'package:shopingly/utils/helpers/helper_functions.dart';

@@ -29,7 +29,6 @@ class ShopinglyHomeAppBar extends StatelessWidget {
       ),
       actions: [
         ShopinglyCartCounterIcon(
-          onPressed: () {},
           iconColor: ShopinglyColors.white,
         ),
       ],

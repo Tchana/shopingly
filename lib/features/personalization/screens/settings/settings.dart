@@ -6,6 +6,7 @@ import 'package:shopingly/common/widgets/custom_shapes/containers/primary_header
 import 'package:shopingly/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:shopingly/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:shopingly/common/widgets/texts/section_heading.dart';
+import 'package:shopingly/features/personalization/screens/address/address.dart';
 import 'package:shopingly/features/personalization/screens/profile/profile.dart';
 import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
@@ -57,7 +58,7 @@ class SettingsScreen extends StatelessWidget {
                       icon: Iconsax.safe_home,
                       title: "My Addresses",
                       subTitle: "Set shopping delivery address",
-                      onTap: () {}),
+                      onTap: () => Get.to(() => UserAddressScreen())),
                   ShopinglySettingsMenuTile(
                       icon: Iconsax.shopping_cart,
                       title: "My Cart",

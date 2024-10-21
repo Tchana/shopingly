@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopingly/common/widgets/appbar/appbar.dart';
-import 'package:shopingly/common/widgets/products/cart/ratings/rating_indicator.dart';
+import 'package:shopingly/common/widgets/products/ratings/rating_indicator.dart';
 import 'package:shopingly/features/shop/screens/product_reviews/widgets/rating_progress_indicator.dart';
 import 'package:shopingly/features/shop/screens/product_reviews/widgets/user_review_card.dart';
 import 'package:shopingly/utils/constants/sizes.dart';

@@ -5,14 +5,15 @@ import 'package:shopingly/utils/constants/enums.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
 
 class ShopinglyBrandTitleTextWithVerifiedIcon extends StatelessWidget {
-  const ShopinglyBrandTitleTextWithVerifiedIcon(
-      {super.key,
-      required this.title,
-      this.maxLines = 1,
-      this.textColor,
-      this.iconColor,
-      this.textAlign,
-      required this.brandTextSize});
+  const ShopinglyBrandTitleTextWithVerifiedIcon({
+    super.key,
+    required this.title,
+    this.maxLines = 1,
+    this.textColor,
+    this.iconColor,
+    this.textAlign,
+    this.brandTextSize = TextSizes.small,
+  });
 
   final String title;
   final int maxLines;

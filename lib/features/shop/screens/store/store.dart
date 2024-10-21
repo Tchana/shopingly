@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shopingly/common/widgets/appbar/appbar.dart';
 import 'package:shopingly/common/widgets/appbar/tabbar.dart';
 import 'package:shopingly/common/widgets/custom_shapes/containers/search_container.dart';
@@ -6,6 +7,7 @@ import 'package:shopingly/common/widgets/layouts/grid_layout.dart';
 import 'package:shopingly/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:shopingly/common/widgets/brands/brand_card.dart';
 import 'package:shopingly/common/widgets/texts/section_heading.dart';
+import 'package:shopingly/features/shop/screens/brand/all_brands.dart';
 import 'package:shopingly/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
@@ -59,7 +61,7 @@ class StoreScreen extends StatelessWidget {
                         /// -- Feature brands
                         ShopinglySectionHeading(
                           title: "Featured Brands",
-                          onPressed: () {},
+                          onPressed: ()=> Get.to(()=>AllBrandsScreen()),
                         ),
                         SizedBox(
                           height: ShopinglySizes.spaceBtwItems / 2,

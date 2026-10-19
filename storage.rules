@@ -1,0 +1,21 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isAdmin() {
+      return request.auth != null &&
+        firestore.exists(/databases/(default)/documents/Admins/$(request.auth.uid));
+    }
+
+    // Catalog images (products, categories, brands, banners) are public to view and
+    // can only be uploaded by back-office staff, as images under 5 MB.
+    match /catalog/{allPaths=**} {
+      allow read: if true;
+      allow write: if isAdmin()
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+      allow delete: if isAdmin();
+    }
+  }
+}

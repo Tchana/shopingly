@@ -1,0 +1,132 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    // Back-office staff. An Admins/{uid} document can only be created from the
+    // Firebase console (or the Admin SDK); clients can never write to it.
+    function isAdmin() {
+      return signedIn() &&
+        exists(/databases/$(database)/documents/Admins/$(request.auth.uid));
+    }
+
+    match /Admins/{uid} {
+      allow get: if isOwner(uid);
+      allow list, write: if false;
+    }
+
+    // ---- Public catalog: anyone can browse, only admins can change it.
+    match /Categories/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /Brands/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /Banners/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /Settings/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /Products/{id} {
+      // Hidden products are only visible to admins. Customer queries must
+      // therefore filter with where('isActive', isEqualTo: true).
+      allow read: if resource.data.isActive == true || isAdmin();
+      allow write: if isAdmin();
+
+      match /Reviews/{uid} {
+        allow read: if true;
+
+        allow create: if isOwner(uid)
+          && request.resource.data.userId == uid
+          && request.resource.data.productId == id
+          && request.resource.data.rating is number
+          && request.resource.data.rating >= 1
+          && request.resource.data.rating <= 5
+          && request.resource.data.comment is string
+          && request.resource.data.comment.size() <= 1000
+          && request.resource.data.keys().hasOnly(
+               ['productId', 'userId', 'userName', 'rating', 'comment', 'createdAt']);
+
+        // Customers may edit their own rating and comment, but never the store's reply.
+        allow update: if (isOwner(uid)
+            && request.resource.data.diff(resource.data).affectedKeys()
+                 .hasOnly(['rating', 'comment', 'userName', 'createdAt'])
+            && request.resource.data.rating >= 1
+            && request.resource.data.rating <= 5)
+          || isAdmin();
+
+        allow delete: if isOwner(uid) || isAdmin();
+      }
+    }
+
+    // Lets the back office list every review across all products.
+    match /{path=**}/Reviews/{reviewId} {
+      allow read: if isAdmin();
+    }
+
+    // ---- Coupons: a customer can look up a code they know, but cannot list
+    // the private ones.
+    match /Coupons/{code} {
+      allow get: if signedIn();
+      allow list: if isAdmin() || (signedIn() && resource.data.isPublic == true);
+      allow write: if isAdmin();
+    }
+
+    // ---- Customers
+    match /Users/{uid} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow create: if isOwner(uid);
+      allow update: if isOwner(uid) || isAdmin();
+      allow delete: if isOwner(uid) || isAdmin();
+
+      match /Addresses/{addressId} {
+        allow read: if isOwner(uid) || isAdmin();
+        allow write: if isOwner(uid);
+      }
+    }
+
+    // ---- Orders
+    match /Orders/{orderId} {
+      allow read: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
+
+      // A customer can only place an order for themselves, in its initial state.
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.status == 'pending'
+        && request.resource.data.paymentStatus == 'unpaid'
+        && request.resource.data.items is list
+        && request.resource.data.items.size() > 0
+        && request.resource.data.total is number
+        && request.resource.data.total >= 0;
+
+      // Customers can cancel their own order while it is still pending.
+      // Everything else (status, payment, stock) is handled by the back office.
+      allow update: if isAdmin()
+        || (signedIn()
+            && resource.data.userId == request.auth.uid
+            && resource.data.status == 'pending'
+            && request.resource.data.status == 'cancelled'
+            && request.resource.data.diff(resource.data).affectedKeys()
+                 .hasOnly(['status', 'updatedAt']));
+
+      allow delete: if false;
+    }
+  }
+}

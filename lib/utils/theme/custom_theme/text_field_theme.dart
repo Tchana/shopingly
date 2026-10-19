@@ -12,7 +12,7 @@ class ShopinglyTextFieldTheme {
     labelStyle: const TextStyle().copyWith(fontSize: 14, color: ShopinglyColors.black),
     hintStyle: const TextStyle().copyWith(fontSize: 14, color: ShopinglyColors.black),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
-    floatingLabelStyle: const TextStyle().copyWith(color: ShopinglyColors.black.withOpacity(0.8)),
+    floatingLabelStyle: const TextStyle().copyWith(color: ShopinglyColors.black.withValues(alpha: 0.8)),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),
       borderSide: const BorderSide(width: 1, color: ShopinglyColors.grey),
@@ -43,7 +43,7 @@ class ShopinglyTextFieldTheme {
     labelStyle: const TextStyle().copyWith(fontSize: 14, color: ShopinglyColors.white),
     hintStyle: const TextStyle().copyWith(fontSize: 14, color: ShopinglyColors.white),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
-    floatingLabelStyle: const TextStyle().copyWith(color: ShopinglyColors.white.withOpacity(0.8)),
+    floatingLabelStyle: const TextStyle().copyWith(color: ShopinglyColors.white.withValues(alpha: 0.8)),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),
       borderSide: const BorderSide(width: 1, color: ShopinglyColors.grey),

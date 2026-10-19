@@ -30,8 +30,8 @@ class ShopinglyCircularIcon extends StatelessWidget {
         color: backgroundColor != null
             ? backgroundColor!
             : dark
-                ? ShopinglyColors.black.withOpacity(0.9)
-                : ShopinglyColors.white.withOpacity(0.9),
+                ? ShopinglyColors.black.withValues(alpha: 0.9)
+                : ShopinglyColors.white.withValues(alpha: 0.9),
         borderRadius: BorderRadius.circular(100),
       ),
       child: IconButton(onPressed: onPressed, icon: Icon(icon, color: color, size: size,)),

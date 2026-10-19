@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopingly/common/widgets/images/shopingly_any_image.dart';
 import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
 import 'package:shopingly/utils/helpers/helper_functions.dart';
@@ -31,11 +32,10 @@ class ShopinglyVerticalImageText extends StatelessWidget {
                 borderRadius: BorderRadius.circular(100),
               ),
               child: Center(
-                child: Image(
-                  image: AssetImage(
-                      image),
+                child: ShopinglyAnyImage(
+                  path: image,
                   fit: BoxFit.cover,
-                  color:dark ? ShopinglyColors.light : ShopinglyColors.dark,
+                  tint: dark ? ShopinglyColors.light : ShopinglyColors.dark,
                 ),
               ),
             ),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shopingly/features/authentication/screens/signup/verify_email.dart';
+import 'package:shopingly/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:shopingly/features/authentication/screens/signup/widgets/terms_conditions_checkbox.dart';
-import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
 import 'package:shopingly/utils/constants/text_strings.dart';
+import 'package:shopingly/utils/validators/validation.dart';
 
-class ShopinglySignupForm extends StatelessWidget {
+class ShopinglySignupForm extends StatefulWidget {
   const ShopinglySignupForm({
     super.key,
     required this.dark,
@@ -16,8 +16,19 @@ class ShopinglySignupForm extends StatelessWidget {
   final bool dark;
 
   @override
+  State<ShopinglySignupForm> createState() => _ShopinglySignupFormState();
+}
+
+class _ShopinglySignupFormState extends State<ShopinglySignupForm> {
+  // Unique tag: each sign-up screen gets its own controller (see the login form).
+  late final controller =
+      Get.put(SignupController(), tag: UniqueKey().toString());
+
+  @override
   Widget build(BuildContext context) {
+    final dark = widget.dark;
     return Form(
+      key: controller.signupFormKey,
       child: Column(
         children: [
           /// First & Last names
@@ -25,6 +36,9 @@ class ShopinglySignupForm extends StatelessWidget {
             children: [
               Expanded(
                 child: TextFormField(
+                  controller: controller.firstName,
+                  validator: (value) =>
+                      ShopinglyValidator.validateEmptyText('First name', value),
                   expands: false,
                   decoration: const InputDecoration(
                     labelText: ShopinglyTexts.firstName,
@@ -37,6 +51,9 @@ class ShopinglySignupForm extends StatelessWidget {
               ),
               Expanded(
                 child: TextFormField(
+                  controller: controller.lastName,
+                  validator: (value) =>
+                      ShopinglyValidator.validateEmptyText('Last name', value),
                   expands: false,
                   decoration: const InputDecoration(
                     labelText: ShopinglyTexts.lastName,
@@ -52,6 +69,9 @@ class ShopinglySignupForm extends StatelessWidget {
 
           /// User name
           TextFormField(
+            controller: controller.username,
+            validator: (value) =>
+                ShopinglyValidator.validateEmptyText('Username', value),
             expands: false,
             decoration: const InputDecoration(
               labelText: ShopinglyTexts.username,
@@ -64,6 +84,9 @@ class ShopinglySignupForm extends StatelessWidget {
 
           /// Email
           TextFormField(
+            controller: controller.email,
+            validator: ShopinglyValidator.validateEmail,
+            keyboardType: TextInputType.emailAddress,
             expands: false,
             decoration: const InputDecoration(
               labelText: ShopinglyTexts.email,
@@ -76,6 +99,9 @@ class ShopinglySignupForm extends StatelessWidget {
 
           /// Phone Number
           TextFormField(
+            controller: controller.phoneNumber,
+            validator: ShopinglyValidator.validatePhoneNumber,
+            keyboardType: TextInputType.phone,
             expands: false,
             decoration: const InputDecoration(
               labelText: ShopinglyTexts.phoneNo,
@@ -87,12 +113,22 @@ class ShopinglySignupForm extends StatelessWidget {
           ),
 
           /// Password
-          TextFormField(
-            expands: false,
-            decoration: const InputDecoration(
-              labelText: ShopinglyTexts.password,
-              prefixIcon: Icon(Iconsax.password_check),
-              suffixIcon: Icon(Iconsax.eye_slash),
+          Obx(
+            () => TextFormField(
+              controller: controller.password,
+              validator: ShopinglyValidator.validatePassword,
+              obscureText: controller.hidePassword.value,
+              expands: false,
+              decoration: InputDecoration(
+                labelText: ShopinglyTexts.password,
+                prefixIcon: const Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                  onPressed: () => controller.hidePassword.toggle(),
+                  icon: Icon(controller.hidePassword.value
+                      ? Iconsax.eye_slash
+                      : Iconsax.eye),
+                ),
+              ),
             ),
           ),
           SizedBox(
@@ -100,7 +136,8 @@ class ShopinglySignupForm extends StatelessWidget {
           ),
 
           /// Terms and Conditions checkbox
-          ShopinglyTermsAndConditionsCheckbox(dark: dark),
+          ShopinglyTermsAndConditionsCheckbox(
+              dark: dark, controller: controller),
           SizedBox(
             height: ShopinglySizes.spaceBtwSections,
           ),
@@ -108,9 +145,18 @@ class ShopinglySignupForm extends StatelessWidget {
           /// Signup button
           SizedBox(
             width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () => Get.to(() =>VerifyEmailScreen()),
-              child: Text(ShopinglyTexts.createAccount),
+            child: Obx(
+              () => ElevatedButton(
+                onPressed:
+                    controller.isLoading.value ? null : controller.signup,
+                child: controller.isLoading.value
+                    ? const SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : Text(ShopinglyTexts.createAccount),
+              ),
             ),
           ),
         ],

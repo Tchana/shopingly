@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopingly/common/widgets/images/shopingly_any_image.dart';
 import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
 import 'package:shopingly/utils/helpers/helper_functions.dart';
@@ -14,19 +15,19 @@ class ShopinglyRoundedImage extends StatelessWidget {
     this.backgroundColor,
     this.fit = BoxFit.contain,
     this.padding,
-    this.isNetworkImage = false,
     this.onPressed,
     this.borderRadius = ShopinglySizes.md,
   });
 
   final double? width, height;
+
+  /// A bundled `assets/...` path or an `https://` URL.
   final String imageUrl;
   final bool applyImageRadius;
   final BoxBorder? border;
   final Color? backgroundColor;
   final BoxFit? fit;
   final EdgeInsetsGeometry? padding;
-  final bool isNetworkImage;
   final VoidCallback? onPressed;
   final double borderRadius;
 
@@ -46,12 +47,7 @@ class ShopinglyRoundedImage extends StatelessWidget {
         ),
         child: ClipRRect(
             borderRadius: applyImageRadius ? BorderRadius.circular(borderRadius) : BorderRadius.zero,
-            child: Image(
-              image: isNetworkImage ? NetworkImage(
-                imageUrl,
-              ) : AssetImage(imageUrl) as ImageProvider,
-              fit: fit,
-            )),
+            child: ShopinglyAnyImage(path: imageUrl, fit: fit)),
       ),
     );
   }

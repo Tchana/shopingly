@@ -4,22 +4,29 @@ import 'package:shopingly/features/shop/screens/product_reviews/widgets/progress
 class ShopinglyOverallProductRating extends StatelessWidget {
   const ShopinglyOverallProductRating({
     super.key,
+    required this.average,
+    required this.perStar,
   });
+
+  /// Average rating, 0 when there are no reviews.
+  final double average;
+
+  /// Review counts for 1 to 5 stars (index 0 = 1 star).
+  final List<int> perStar;
 
   @override
   Widget build(BuildContext context) {
+    final total = perStar.fold(0, (a, b) => a + b);
+    double share(int star) => total == 0 ? 0 : perStar[star - 1] / total;
     return Row(
       children: [
-        Expanded(flex: 3, child: Text('4.8', style: Theme.of(context).textTheme.displayLarge)),
+        Expanded(flex: 3, child: Text(average.toStringAsFixed(1), style: Theme.of(context).textTheme.displayLarge)),
         Expanded(
           flex: 7,
           child: Column(
             children: [
-              ShopinglyRatingProgressIndicator(text: "5", value: 1.0,),
-              ShopinglyRatingProgressIndicator(text: "4", value: 0.8,),
-              ShopinglyRatingProgressIndicator(text: "3", value: 0.6,),
-              ShopinglyRatingProgressIndicator(text: "2", value: 0.4,),
-              ShopinglyRatingProgressIndicator(text: "1", value: 0.2,),
+              for (final star in [5, 4, 3, 2, 1])
+                ShopinglyRatingProgressIndicator(text: '$star', value: share(star)),
             ],
           ),
         )

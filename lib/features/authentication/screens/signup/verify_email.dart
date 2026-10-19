@@ -1,24 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shopingly/common/widgets/success_screen/success_screen.dart';
-import 'package:shopingly/features/authentication/screens/login/login.dart';
+import 'package:shopingly/data/repositories/authentication/authentication_repository.dart';
+import 'package:shopingly/features/authentication/controllers/signup/verify_email_controller.dart';
 import 'package:shopingly/utils/constants/image_strings.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
 import 'package:shopingly/utils/constants/text_strings.dart';
 import 'package:shopingly/utils/helpers/helper_functions.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
-  const VerifyEmailScreen({super.key});
+  const VerifyEmailScreen({super.key, this.email});
+
+  final String? email;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(VerifyEmailController());
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            onPressed: () => Get.offAll(() => LoginScreen()),
+            onPressed: () => AuthenticationRepository.instance.logout(),
             icon: Icon(CupertinoIcons.clear),
           ),
         ],
@@ -44,7 +47,7 @@ class VerifyEmailScreen extends StatelessWidget {
                 height: ShopinglySizes.spaceBtwSections,
               ),
               Text(
-                'support@shopingly.com',
+                email ?? '',
                 style: Theme.of(context).textTheme.labelLarge,
                 textAlign: TextAlign.center,
               ),
@@ -61,16 +64,19 @@ class VerifyEmailScreen extends StatelessWidget {
               ),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () => Get.to(
-                    () => SuccessScreen(
-                      image: ShopinglyImages.staticSuccessIllustration,
-                      title: ShopinglyTexts.yourAccountCreatedTitle,
-                      subTitle: ShopinglyTexts.yourAccountCreatedSubTitle,
-                      onPressed: () => Get.to(() => LoginScreen()),
-                    ),
+                child: Obx(
+                  () => ElevatedButton(
+                    onPressed: controller.isLoading.value
+                        ? null
+                        : controller.checkEmailVerificationStatus,
+                    child: controller.isLoading.value
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          )
+                        : Text(ShopinglyTexts.continueText),
                   ),
-                  child: Text(ShopinglyTexts.continueText),
                 ),
               ),
               SizedBox(
@@ -79,7 +85,7 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: controller.sendEmailVerification,
                   child: Text(ShopinglyTexts.resendEmail),
                 ),
               ),

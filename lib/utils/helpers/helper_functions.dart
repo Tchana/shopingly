@@ -25,6 +25,7 @@ class ShopinglyHelperFunctions {
     } else if (value == 'Teal') {
       return Colors.teal;
     }
+    return null;
   }
 
   static void showSnackBar(String message) {

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shopingly/features/shop/controllers/cart_controller.dart';
+import 'package:shopingly/features/shop/controllers/catalog_controller.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
 
 class BillingAmountSection extends StatelessWidget {
@@ -6,47 +9,31 @@ class BillingAmountSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        /// -- SubTotal
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text("Subtotal", style: Theme.of(context).textTheme.bodyMedium),
-            Text("\$300.0", style: Theme.of(context).textTheme.bodyMedium),
-          ],
-        ),
-
-        /// -- Shipping Fee
-        SizedBox(height: ShopinglySizes.spaceBtwItems / 2),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text("Shipping Fee", style: Theme.of(context).textTheme.bodyMedium),
-            Text("\$6.0", style: Theme.of(context).textTheme.labelLarge),
-          ],
-        ),
-
-        /// -- Tax Fee
-        SizedBox(height: ShopinglySizes.spaceBtwItems / 2),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text("Tax Fee", style: Theme.of(context).textTheme.bodyMedium),
-            Text("\$6.0", style: Theme.of(context).textTheme.labelLarge),
-          ],
-        ),
-
-        /// -- Order Total
-        SizedBox(height: ShopinglySizes.spaceBtwItems / 2),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text("Order Total", style: Theme.of(context).textTheme.bodyMedium),
-            Text("\$6.0", style: Theme.of(context).textTheme.titleMedium),
-          ],
-        ),
-      ],
-    );
+    final cart = CartController.instance;
+    final catalog = CatalogController.instance;
+    return Obx(() {
+      final totals = cart.totals;
+      final settings = catalog.settings.value;
+      Widget line(String label, String value, {TextStyle? style}) => Padding(
+            padding: const EdgeInsets.only(bottom: ShopinglySizes.spaceBtwItems / 2),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(label, style: Theme.of(context).textTheme.bodyMedium),
+                Text(value, style: style ?? Theme.of(context).textTheme.labelLarge),
+              ],
+            ),
+          );
+      return Column(
+        children: [
+          line('Subtotal', settings.money(totals.subtotal), style: Theme.of(context).textTheme.bodyMedium),
+          if (totals.discount > 0) line('Discount', '- ${settings.money(totals.discount)}'),
+          line('Shipping Fee', totals.shipping == 0 ? 'Free' : settings.money(totals.shipping)),
+          line('Tax Fee (${settings.taxPercent.toStringAsFixed(settings.taxPercent % 1 == 0 ? 0 : 2)}%)',
+              settings.money(totals.tax)),
+          line('Order Total', settings.money(totals.total), style: Theme.of(context).textTheme.titleMedium),
+        ],
+      );
+    });
   }
 }

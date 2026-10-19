@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shopingly/features/shop/controllers/catalog_controller.dart';
 import 'package:shopingly/common/styles/spacing_styles.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
 import 'package:shopingly/utils/constants/text_strings.dart';
@@ -39,7 +41,9 @@ class SuccessScreen extends StatelessWidget {
                 height: ShopinglySizes.spaceBtwSections,
               ),
               Text(
-                'support@shopingly.com',
+                Get.isRegistered<CatalogController>()
+                    ? CatalogController.instance.settings.value.supportEmail
+                    : 'support@shopingly.com',
                 style: Theme.of(context).textTheme.labelLarge,
                 textAlign: TextAlign.center,
               ),

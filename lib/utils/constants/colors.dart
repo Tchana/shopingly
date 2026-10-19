@@ -31,7 +31,7 @@ class ShopinglyColors {
 
   // Background container colors
   static const Color lightContainer = Color(0xFFF6F6F6);
-  static Color darkContainer = ShopinglyColors.white.withOpacity(0.1);
+  static Color darkContainer = ShopinglyColors.white.withValues(alpha: 0.1);
 
   // Button Colors
   static const Color buttonPrimary = Color(0xFF4b68ff);

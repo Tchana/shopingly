@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopingly/common/widgets/icons/circular_icon.dart';
+import 'package:shopingly/features/shop/controllers/product_detail_controller.dart';
 import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
 import 'package:shopingly/utils/helpers/helper_functions.dart';
 
 class ShopinglyBottomAddToCart extends StatelessWidget {
-  const ShopinglyBottomAddToCart({super.key});
+  const ShopinglyBottomAddToCart({super.key, required this.controller});
+
+  final ProductDetailController controller;
 
   @override
   Widget build(BuildContext context) {
     final dark = ShopinglyHelperFunctions.isDarkMode(context);
+    final inStock = controller.product.inStock;
     return Container(
       padding: EdgeInsets.symmetric(
           horizontal: ShopinglySizes.defaultSpace,
@@ -32,9 +37,11 @@ class ShopinglyBottomAddToCart extends StatelessWidget {
                 width: 40,
                 height: 40,
                 color: ShopinglyColors.white,
+                onPressed: inStock ? controller.decrement : null,
               ),
               SizedBox(width: ShopinglySizes.spaceBtwItems),
-              Text("2", style: Theme.of(context).textTheme.titleSmall),
+              Obx(() => Text(controller.quantity.value.toString(),
+                  style: Theme.of(context).textTheme.titleSmall)),
               SizedBox(width: ShopinglySizes.spaceBtwItems),
               ShopinglyCircularIcon(
                 icon: Iconsax.add,
@@ -42,17 +49,18 @@ class ShopinglyBottomAddToCart extends StatelessWidget {
                 width: 40,
                 height: 40,
                 color: ShopinglyColors.white,
+                onPressed: inStock ? controller.increment : null,
               ),
             ],
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: inStock ? controller.addToCart : null,
             style: ElevatedButton.styleFrom(
               padding: EdgeInsets.all(ShopinglySizes.md),
               backgroundColor: ShopinglyColors.black,
               side: BorderSide(color: ShopinglyColors.black),
             ),
-            child: Text("Add to Cart"),
+            child: Text(inStock ? "Add to Cart" : "Out of stock"),
           )
         ],
       ),

@@ -5,7 +5,7 @@ class ShopinglyChipTheme {
   ShopinglyChipTheme._();
 
   static ChipThemeData lightChipTheme = ChipThemeData(
-    disabledColor: ShopinglyColors.grey.withOpacity(0.4),
+    disabledColor: ShopinglyColors.grey.withValues(alpha: 0.4),
     labelStyle: const TextStyle(color: ShopinglyColors.black),
     selectedColor: ShopinglyColors.primaryColor,
     padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),

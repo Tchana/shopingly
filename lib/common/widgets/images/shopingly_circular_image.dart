@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopingly/common/widgets/images/shopingly_any_image.dart';
 import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/constants/sizes.dart';
 import 'package:shopingly/utils/helpers/helper_functions.dart';
@@ -8,7 +9,6 @@ class ShopinglyCircularImage extends StatelessWidget {
     super.key,
     this.fit = BoxFit.cover,
     required this.image,
-    this.isNetworkImage = false,
     this.overlayColor,
     this.backgroundColor,
     this.width = 56,
@@ -17,8 +17,9 @@ class ShopinglyCircularImage extends StatelessWidget {
   });
 
   final BoxFit? fit;
+
+  /// A bundled `assets/...` path or an `https://` URL.
   final String image;
-  final bool isNetworkImage;
   final Color? overlayColor;
   final Color? backgroundColor;
   final double width, height, padding;
@@ -35,12 +36,8 @@ class ShopinglyCircularImage extends StatelessWidget {
           borderRadius: BorderRadius.circular(100)),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100),
-        child: Image(
-          fit: fit,
-            image: isNetworkImage ? NetworkImage(image) : AssetImage(image) as ImageProvider,
-            color: overlayColor,),
+        child: ShopinglyAnyImage(path: image, fit: fit, tint: overlayColor),
       ),
     );
-
   }
 }

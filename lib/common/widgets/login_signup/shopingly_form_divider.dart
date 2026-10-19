@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:shopingly/utils/constants/colors.dart';
-import 'package:shopingly/utils/constants/text_strings.dart';
 
 class ShopinglyFormDivider extends StatelessWidget {
   const ShopinglyFormDivider({

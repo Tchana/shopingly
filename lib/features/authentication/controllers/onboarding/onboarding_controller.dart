@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shopingly/data/repositories/authentication/authentication_repository.dart';
 import 'package:shopingly/features/authentication/screens/login/login.dart';
+import 'package:shopingly/utils/local_storage/storage_utility.dart';
 
 class OnBoardingController extends GetxController {
   static OnBoardingController get instance => Get.find();
@@ -22,7 +24,8 @@ class OnBoardingController extends GetxController {
   /// Update current index & jump to next page
   void nextPage() {
     if(currentPageIndex.value == 2){
-      Get.to(LoginScreen());
+      ShopinglyLocalStorage().saveData(AuthenticationRepository.isFirstTimeKey, false);
+      Get.offAll(() => const LoginScreen());
     } else {
       int page = currentPageIndex.value + 1;
       pageController.jumpToPage(page);

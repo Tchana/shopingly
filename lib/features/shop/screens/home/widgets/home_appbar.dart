@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shopingly/common/widgets/appbar/appbar.dart';
 import 'package:shopingly/common/widgets/products/cart/cart_menu_icon.dart';
+import 'package:shopingly/features/personalization/controllers/user_controller.dart';
 import 'package:shopingly/utils/constants/colors.dart';
 import 'package:shopingly/utils/constants/text_strings.dart';
 
@@ -20,11 +22,14 @@ class ShopinglyHomeAppBar extends StatelessWidget {
                   .textTheme
                   .labelMedium!
                   .apply(color: ShopinglyColors.grey)),
-          Text(ShopinglyTexts.homeAppbarSubTitle,
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineSmall!
-                  .apply(color: ShopinglyColors.white))
+          Obx(
+            () => Text(
+                UserController.instance.user.value.fullName,
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall!
+                    .apply(color: ShopinglyColors.white)),
+          )
         ],
       ),
       actions: [

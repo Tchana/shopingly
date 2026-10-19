@@ -16,10 +16,10 @@ class ShopinglyTextTheme{
 
     bodyLarge: const TextStyle().copyWith(fontSize: 14.0, fontWeight: FontWeight.w500, color: ShopinglyColors.black,),
     bodyMedium: const TextStyle().copyWith(fontSize: 14.0, fontWeight: FontWeight.normal, color: ShopinglyColors.black,),
-    bodySmall: const TextStyle().copyWith(fontSize: 14.0, fontWeight: FontWeight.w500, color: ShopinglyColors.black.withOpacity(0.5),),
+    bodySmall: const TextStyle().copyWith(fontSize: 14.0, fontWeight: FontWeight.w500, color: ShopinglyColors.black.withValues(alpha: 0.5),),
 
     labelLarge: const TextStyle().copyWith(fontSize: 12.0, fontWeight: FontWeight.normal, color: ShopinglyColors.black,),
-    labelMedium: const TextStyle().copyWith(fontSize: 12.0, fontWeight: FontWeight.normal, color: ShopinglyColors.black.withOpacity(0.5),),
+    labelMedium: const TextStyle().copyWith(fontSize: 12.0, fontWeight: FontWeight.normal, color: ShopinglyColors.black.withValues(alpha: 0.5),),
   );
 
   static TextTheme darkTextTheme = TextTheme(
@@ -33,9 +33,9 @@ class ShopinglyTextTheme{
 
     bodyLarge: const TextStyle().copyWith(fontSize: 14.0, fontWeight: FontWeight.w500, color: ShopinglyColors.white,),
     bodyMedium: const TextStyle().copyWith(fontSize: 14.0, fontWeight: FontWeight.normal, color: ShopinglyColors.white,),
-    bodySmall: const TextStyle().copyWith(fontSize: 14.0, fontWeight: FontWeight.w500, color: ShopinglyColors.white.withOpacity(0.5),),
+    bodySmall: const TextStyle().copyWith(fontSize: 14.0, fontWeight: FontWeight.w500, color: ShopinglyColors.white.withValues(alpha: 0.5),),
 
     labelLarge: const TextStyle().copyWith(fontSize: 12.0, fontWeight: FontWeight.normal, color: ShopinglyColors.white,),
-    labelMedium: const TextStyle().copyWith(fontSize: 12.0, fontWeight: FontWeight.normal, color: ShopinglyColors.white.withOpacity(0.5),),
+    labelMedium: const TextStyle().copyWith(fontSize: 12.0, fontWeight: FontWeight.normal, color: ShopinglyColors.white.withValues(alpha: 0.5),),
   );
 }

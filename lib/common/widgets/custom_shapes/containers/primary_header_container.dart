@@ -23,7 +23,7 @@ class PrimaryHeaderContainer extends StatelessWidget {
               right: -250,
               child: ShopinglyCircularContainer(
                 backgroundColor:
-                ShopinglyColors.textWhite.withOpacity(0.1),
+                ShopinglyColors.textWhite.withValues(alpha: 0.1),
               ),
             ),
             Positioned(
@@ -31,7 +31,7 @@ class PrimaryHeaderContainer extends StatelessWidget {
               right: -300,
               child: ShopinglyCircularContainer(
                 backgroundColor:
-                ShopinglyColors.textWhite.withOpacity(0.1),
+                ShopinglyColors.textWhite.withValues(alpha: 0.1),
               ),),
             child,
           ],
